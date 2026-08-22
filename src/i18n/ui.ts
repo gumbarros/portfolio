@@ -42,8 +42,16 @@ export const ui = {
     about: {
       cmd: 'whoami --verbose',
       headline: 'An architect, not just a library author.',
-      body: "I'm Gustavo Mauricio de Barros, a software architect at <a href=\"https://www.jjconsulting.com.br\">JJConsulting</a>. My speciality is the .NET ecosystem. When I'm not shipping libraries, I travel, work out, cycle, and play piano.",
-      tags: ['.NET', 'C#', 'Flutter', 'Docker', 'software architecture', 'open source'],
+      body: "I'm Gustavo Mauricio de Barros, a software architect and core developer at <a href=\"https://www.jjconsulting.com.br\">JJConsulting</a>'s internal framework team. I turn recurring engineering problems into reliable tools, reusable libraries, and architecture that can grow with the business.",
+      status: 'running',
+      events: [
+        { year: '2019', text: 'booting IFSP · Systems Analysis and Development' },
+        { year: '2019', text: 'joined JJConsulting as an intern' },
+        { year: '2020', text: 'developer · embraced remote work during the pandemic' },
+        { year: '2022', text: 'graduated from IFSP · Systems Analysis and Development' },
+        { year: '2025', text: 'Tech Lead · raising the bar for teams, standards, and delivery' },
+        { year: '2026', text: 'Software Architect · designing systems built to evolve' },
+      ],
     },
     contact: {
       cmd: 'contact',
@@ -87,8 +95,16 @@ export const ui = {
     about: {
       cmd: 'whoami --verbose',
       headline: 'Um arquiteto, não apenas um autor de bibliotecas.',
-      body: 'Sou Gustavo Mauricio de Barros, arquiteto de software na <a href="https://www.jjconsulting.com.br">JJConsulting</a>. Minha especialidade é o ecossistema .NET. Quando não estou publicando bibliotecas, viajo, malho, ando de bicicleta e toco piano.',
-      tags: ['.NET', 'C#', 'Flutter', 'Docker', 'arquitetura de software', 'código aberto'],
+      body: 'Sou Gustavo Mauricio de Barros, arquiteto de software e desenvolvedor core no time de frameworks internos da <a href="https://www.jjconsulting.com.br">JJConsulting</a>. Transformo problemas recorrentes de engenharia em ferramentas confiáveis, bibliotecas reutilizáveis e arquiteturas que crescem junto com o negócio.',
+      status: 'rodando',
+      events: [
+        { year: '2019', text: 'iniciando IFSP · Análise e Desenvolvimento de Sistemas' },
+        { year: '2019', text: 'entrei na JJConsulting como estagiário' },
+        { year: '2020', text: 'desenvolvedor · abracei o trabalho remoto durante a pandemia' },
+        { year: '2022', text: 'formado pelo IFSP · Análise e Desenvolvimento de Sistemas' },
+        { year: '2025', text: 'Tech Lead · elevando o nível dos times, padrões e entregas' },
+        { year: '2026', text: 'Arquiteto de Software · projetando sistemas feitos para evoluir' },
+      ],
     },
     contact: {
       cmd: 'contato',
@@ -132,8 +148,16 @@ export const ui = {
     about: {
       cmd: 'whoami --verbose',
       headline: 'Un arquitecto, no solo un autor de bibliotecas.',
-      body: 'Soy Gustavo Mauricio de Barros, arquitecto de software en <a href="https://www.jjconsulting.com.br">JJConsulting</a>. Mi especialidad es el ecosistema .NET. Cuando no estoy publicando bibliotecas, viajo, hago ejercicio, ando en bicicleta y toco el piano.',
-      tags: ['.NET', 'C#', 'Flutter', 'Docker', 'arquitectura de software', 'código abierto'],
+      body: 'Soy Gustavo Mauricio de Barros, arquitecto de software y desarrollador core en el equipo de frameworks internos de <a href="https://www.jjconsulting.com.br">JJConsulting</a>. Convierto problemas recurrentes de ingeniería en herramientas confiables, bibliotecas reutilizables y arquitecturas que crecen con el negocio.',
+      status: 'ejecutando',
+      events: [
+        { year: '2019', text: 'iniciando IFSP · Análisis y Desarrollo de Sistemas' },
+        { year: '2019', text: 'entré en JJConsulting como pasante' },
+        { year: '2020', text: 'desarrollador · adopté el trabajo remoto durante la pandemia' },
+        { year: '2022', text: 'me gradué en IFSP · Análisis y Desarrollo de Sistemas' },
+        { year: '2025', text: 'Tech Lead · elevando el nivel de equipos, estándares y entregas' },
+        { year: '2026', text: 'Arquitecto de Software · diseñando sistemas hechos para evolucionar' },
+      ],
     },
     contact: {
       cmd: 'contacto',
