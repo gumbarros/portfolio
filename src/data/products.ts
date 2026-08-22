@@ -59,7 +59,7 @@ export const products: Product[] = [
     rootPath: "snapshots");
 
 await git.SetObject("2026-08-21.json", stream);`,
-    codeLabel: 'git-store.cs',
+    codeLabel: 'GitStore.cs',
     stars: '455',
     forks: '73',
     statsNote: 'in the FluentStorage repo',
@@ -80,7 +80,7 @@ await git.SetObject("2026-08-21.json", stream);`,
 
 var result = await compiler.CompileStringAsync(
     "$color: red; a { color: $color; }");`,
-    codeLabel: 'compile-sass.cs',
+    codeLabel: 'SassCompiler.cs',
     stars: '3',
     role: 'author',
     github: 'https://github.com/gumbarros/EmbeddedSass.Net',
