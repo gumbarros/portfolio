@@ -5,7 +5,6 @@ export interface Product {
   description: string;
   code: string;
   codeLabel: string;
-  install: string;
   stars: string;
   forks?: string;
   statsNote?: string;
@@ -26,7 +25,6 @@ export const products: Product[] = [
     code: `var result = new Expression("2 + 20 * 2").Evaluate();
 // 42`,
     codeLabel: 'Evaluate.cs',
-    install: 'dotnet add package NCalc',
     stars: '1.2k',
     forks: '126',
     role: 'contributor',
@@ -42,7 +40,6 @@ export const products: Product[] = [
       'Generates forms and CRUD from your database metadata — events, validation, extensible.',
     code: `builder.Services.AddJJMasterDataWeb()`,
     codeLabel: 'Program.cs',
-    install: 'dotnet add package JJMasterData.Web',
     stars: '209',
     forks: '25',
     role: 'maintainer',
@@ -64,7 +61,6 @@ export const products: Product[] = [
 
 await git.SetObject("2026-08-21.json", stream);`,
     codeLabel: 'git-store.cs',
-    install: 'dotnet add package FluentStorage.Git',
     stars: '455',
     forks: '73',
     statsNote: 'in the FluentStorage repo',
@@ -86,7 +82,6 @@ await git.SetObject("2026-08-21.json", stream);`,
 var result = await compiler.CompileStringAsync(
     "$color: red; a { color: $color; }");`,
     codeLabel: 'compile-sass.cs',
-    install: 'dotnet add package EmbeddedSass.Net',
     stars: '3',
     role: 'author',
     github: 'https://github.com/gumbarros/EmbeddedSass.Net',

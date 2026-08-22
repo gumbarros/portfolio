@@ -18,6 +18,8 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
 }
 
 html,
@@ -34,6 +36,34 @@ body {
   font-size: var(--text-base);
   font-weight: 400;
   min-height: 100vh;
+}
+
+/* CRT scanlines — subtle phosphor overlay across the whole viewport */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    oklch(0% 0 0 / 0.035) 0px,
+    oklch(0% 0 0 / 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Faint phosphor glow behind the content */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 80% at 50% 0%, oklch(22% 0.10 244 / 0.35), transparent 70%),
+    radial-gradient(50% 60% at 50% 100%, oklch(16% 0.05 244 / 0.25), transparent 70%);
 }
 
 h1,
@@ -57,6 +87,27 @@ p {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Inline prose links — accent blue + underline, mono */
+p a,
+.hero__lede a,
+.entry__desc a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklch, var(--color-accent) 45%, transparent);
+  transition:
+    color var(--dur-base) var(--ease-out),
+    text-decoration-color var(--dur-base) var(--ease-out);
+}
+
+p a:hover,
+.hero__lede a:hover,
+.entry__desc a:hover {
+  color: var(--color-focus);
+  text-decoration-color: var(--color-accent);
 }
 
 code,
@@ -147,6 +198,16 @@ button:focus-visible,
 }
 
 .nav__flag:hover {
+  color: var(--color-accent);
+}
+
+.nav__flag.is-active {
+  color: var(--color-accent);
+}
+
+.nav__flag.is-active::before {
+  content: '▸';
+  margin-right: var(--space-xs);
   color: var(--color-accent);
 }
 
@@ -331,6 +392,7 @@ button:focus-visible,
    ============================================================= */
 .ledger {
   border-bottom: 1px solid var(--color-rule);
+  scroll-margin-top: 72px;
 }
 
 .ledger__head {
@@ -511,6 +573,7 @@ button:focus-visible,
 .about {
   border-bottom: 1px solid var(--color-rule);
   padding-block: var(--space-3xl);
+  scroll-margin-top: 72px;
 }
 
 .about__head {
@@ -556,6 +619,40 @@ button:focus-visible,
 .contact {
   border-bottom: 1px solid var(--color-rule);
   padding-block: var(--space-3xl);
+  scroll-margin-top: 72px;
+}
+
+.contact__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
+  gap: clamp(var(--space-xl), 6vw, var(--space-3xl));
+  align-items: center;
+}
+
+.contact__photo {
+  margin: 0 0 0 auto;
+  min-width: 0;
+  justify-self: end;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  width: 100%;
+  max-width: 12rem;
+}
+
+.contact__photo .avatar {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: var(--space-sm);
+  background: var(--color-paper-2);
+  opacity: 0.95;
+  filter: saturate(0.92);
 }
 
 .contact__head .cmd {
@@ -620,6 +717,17 @@ button:focus-visible,
   gap: var(--space-sm) var(--space-xl);
 }
 
+.footer__meta a {
+  color: var(--color-ink-2);
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: 1px;
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.footer__meta a:hover {
+  color: var(--color-accent);
+}
+
 /* =============================================================
    Reveal (whole motion engine) — hidden only when JS is present
    so a blocked script never leaves the page blank.
@@ -656,6 +764,14 @@ button:focus-visible,
 
   .entry--flip .entry__solution {
     order: 1;
+  }
+
+  .contact__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__photo {
+    width: clamp(6.5rem, 34vw, 9rem);
   }
 }
 

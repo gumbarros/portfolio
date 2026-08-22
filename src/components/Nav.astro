@@ -1,0 +1,49 @@
+---
+const productUrl = 'https://github.com/gumbarros';
+const links = [
+  { href: '/#products', label: '--products', id: 'products' },
+  { href: '/#about', label: '--about', id: 'about' },
+  { href: '/#contact', label: '--contact', id: 'contact' },
+];
+---
+
+<nav class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__prompt" href="/#top">
+      <span class="p-user">gumbarros</span><span class="p-path">@portfolio:~$</span>
+    </a>
+    <div class="nav__flags">
+      {links.map((l) => (
+        <a class="nav__flag" href={l.href} data-target={l.id}>
+          {l.label}
+        </a>
+      ))}
+      <a class="nav__flag nav__flag--cta" href={productUrl} target="_blank" rel="noopener">--github ↗</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const flags = document.querySelectorAll<HTMLAnchorElement>('.nav__flag[data-target]');
+  const targets = [...flags]
+    .map((f) => document.getElementById(f.dataset.target ?? ''))
+    .filter(Boolean) as HTMLElement[];
+
+  const setActive = (id: string) => {
+    flags.forEach((f) => f.classList.toggle('is-active', f.dataset.target === id));
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) setActive(e.target.id);
+        }
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
+    targets.forEach((t) => io.observe(t));
+  } else {
+    setActive(targets[0]?.id ?? '');
+  }
+</script>
