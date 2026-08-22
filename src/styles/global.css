@@ -843,7 +843,11 @@ button:focus-visible,
   }
 
   .contact__photo {
-    display: none;
+    order: -1;
+    width: clamp(6.5rem, 34vw, 9rem);
+    justify-self: start;
+    margin-inline: 0;
+    margin-bottom: var(--space-xl);
   }
 
   .contact__text {
