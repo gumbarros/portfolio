@@ -21,9 +21,8 @@ export const products: Product[] = [
     name: 'NCalc',
     problem: 'Evaluate a user-typed expression without compiling C# at runtime.',
     description:
-      'A fast .NET expression evaluator — literals, operators, parameters, built-in and custom functions.',
-    code: `var result = new Expression("2 + 20 * 2").Evaluate();
-// 42`,
+      'A fast .NET expression evaluator: literals, operators, parameters, built-in and custom functions.',
+    code: `var result = new Expression("2 + 20 * 2").Evaluate<int>(); // 42`,
     codeLabel: 'Evaluate.cs',
     stars: '1.2k',
     forks: '126',
@@ -37,7 +36,7 @@ export const products: Product[] = [
     problem:
       'Every table needs a CRUD screen, and you have written the same one forty times.',
     description:
-      'Generates forms and CRUD from your database metadata — events, validation, extensible.',
+      'Generates forms and CRUD from your database metadata: events, validation, extensible.',
     code: `builder.Services.AddJJMasterDataWeb()`,
     codeLabel: 'Program.cs',
     stars: '209',
@@ -51,7 +50,7 @@ export const products: Product[] = [
     id: 'fluentstorage-git',
     name: 'FluentStorage.Git',
     problem:
-      'A blob store backed by a Git repo — commits as versions, push as persistence.',
+      'A blob store backed by a Git repo: commits as versions, push as persistence.',
     description:
       'A Git provider for FluentStorage: read and write files in a repo working tree; versions map to commit history.',
     code: `IStore git = GitStorage.FromToken(

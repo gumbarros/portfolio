@@ -4,13 +4,14 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  lang?: string;
 }
 
-const { title = 'Gustavo Mauricio de Barros', description = 'Software architect building .NET tools that turn named problems into one-liners.' } = Astro.props;
+const { title = 'Gustavo Mauricio de Barros', description = 'Software architect building .NET tools that turn named problems into one-liners.', lang = 'en' } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,5 +28,31 @@ const { title = 'Gustavo Mauricio de Barros', description = 'Software architect 
   </head>
   <body>
     <slot />
+    <script is:inline>
+      // Auto-set language for first-time visitors (Brazilians -> pt-br).
+      // Respects an explicit choice stored by the language selector.
+      (function () {
+        try {
+          var KEY = 'gumbarros-locale';
+          var chosen = localStorage.getItem(KEY);
+          if (chosen) return;
+
+          var path = window.location.pathname;
+          var isDefaultRoute = path === '/' || path === '/index.html';
+
+          var nav = (navigator.language || '').toLowerCase();
+          var wantsPt = /^pt/.test(nav);
+          var wantsEs = /^es/.test(nav);
+
+          var target = wantsPt ? '/pt-br/' : wantsEs ? '/es/' : null;
+          if (!target || !isDefaultRoute) return;
+
+          // only redirect if already not on that locale
+          window.location.replace(target + window.location.hash);
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
   </body>
 </html>

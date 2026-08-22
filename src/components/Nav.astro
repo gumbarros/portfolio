@@ -1,24 +1,52 @@
 ---
+import { locales, localeLabels, defaultLocale, type Locale } from '../i18n/ui';
+import { getLocaleUrl, useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
 const productUrl = 'https://github.com/gumbarros';
+const hash = Astro.url.hash;
+
 const links = [
-  { href: '/#products', label: '--products', id: 'products' },
-  { href: '/#about', label: '--about', id: 'about' },
-  { href: '/#contact', label: '--contact', id: 'contact' },
+  { id: 'products', label: t('nav.products') },
+  { id: 'about', label: t('nav.about') },
+  { id: 'contact', label: t('nav.contact') },
 ];
 ---
 
 <nav class="nav">
   <div class="wrap nav__inner">
-    <a class="nav__prompt" href="/#top">
+    <a class="nav__prompt" href={getLocaleUrl(locale, '/')}>
       <span class="p-user">gumbarros</span><span class="p-path">@portfolio:~$</span>
     </a>
     <div class="nav__flags">
       {links.map((l) => (
-        <a class="nav__flag" href={l.href} data-target={l.id}>
+        <a class="nav__flag" href={`#${l.id}`} data-target={l.id}>
           {l.label}
         </a>
       ))}
       <a class="nav__flag nav__flag--cta" href={productUrl} target="_blank" rel="noopener">--github ↗</a>
+      <label class="nav__lang">
+        <span class="visually-hidden">{t('nav.language')}</span>
+        <select
+          aria-label={t('nav.language')}
+          data-locale
+          onchange="window.location.href = this.value"
+        >
+          {locales.map((l) => (
+            <option
+              value={`${getLocaleUrl(l, '/')}${hash}`}
+              selected={l === locale}
+            >
+              {localeLabels[l]}
+            </option>
+          ))}
+        </select>
+      </label>
     </div>
   </div>
 </nav>
@@ -46,4 +74,15 @@ const links = [
   } else {
     setActive(targets[0]?.id ?? '');
   }
+
+  // Persist the user's language choice so we stop auto-redirecting them.
+  document.querySelectorAll<HTMLSelectElement>('[data-locale]').forEach((sel) => {
+    sel.addEventListener('change', () => {
+      try {
+        localStorage.setItem('gumbarros-locale', sel.value);
+      } catch (e) {
+        /* ignore */
+      }
+    });
+  });
 </script>

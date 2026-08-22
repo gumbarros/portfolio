@@ -1,0 +1,170 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { products } from '../data/products';
+import { productContent, type Locale } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+// Merge the static product shell with the localized content for this locale.
+const localizedProducts = products.map((p) => {
+  const extra = productContent[locale][p.id] ?? productContent.en[p.id];
+  return { ...p, ...extra };
+});
+
+// Naive terminal highlighting: mute comment lines; wrap a leading keyword.
+function highlight(src: string): string {
+  return src
+    .split('\n')
+    .map((line) => {
+      const trimmed = line.trimStart();
+      if (trimmed.startsWith('//')) {
+        return `<span class="c">${line}</span>`;
+      }
+      const m = trimmed.match(/^(var|await|IStore|builder|using|new|$color)\b/);
+      if (m) {
+        const kw = m[0];
+        const idx = line.indexOf(kw);
+        return `${line.slice(0, idx)}<span class="k">${kw}</span>${line.slice(idx + kw.length)}`;
+      }
+      return line;
+    })
+    .join('\n');
+}
+---
+
+<SiteLayout locale={locale}>
+  <!-- ============================ HERO ============================ -->
+  <header class="hero" id="top">
+    <div class="wrap hero__inner">
+      <code class="hero__cmd">
+        <span class="p-user">gumbarros</span><span class="p-path">@portfolio:~$</span>
+        <span data-type="whoami"></span><span class="cursor" aria-hidden="true"></span>
+      </code>
+      <h1 class="hero__title" set:html={t('hero.title')} />
+      <p class="hero__lede" set:html={t('hero.lede')} />
+      <div class="hero__ctas">
+        <a class="btn btn--primary" href="#products">
+          <span>{t('hero.viewProducts')}</span><span class="arrow">→</span>
+        </a>
+        <a class="btn btn--ghost" href="#contact">
+          <span>{t('hero.contact')}</span><span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================ PRODUCTS ============================ -->
+  <section class="ledger" id="products">
+    <div class="wrap ledger__head reveal">
+      <code class="cmd">gumbarros@portfolio:~$ ls ./problems/ · {t('products.entries')(localizedProducts.length)}</code>
+      <h2>{t('products.headline')}</h2>
+    </div>
+
+    <div class="wrap ledger__list">
+      {localizedProducts.map((p, i) => (
+        <article class:list={['entry', { 'entry--flip': i % 2 === 1 }]}>
+          <div class="entry__problem reveal">
+            <code class="entry__prompt"><span class="p-user">$</span> {t('products.prompt')}</code>
+            <h3>{p.problem}</h3>
+            <p class="entry__desc">{p.description}</p>
+          </div>
+
+          <div class="entry__solution reveal">
+            <div class="codebox">
+              <div class="codebox__bar">
+                <span>{p.codeLabel}</span>
+                <span>{p.name}</span>
+              </div>
+              <pre class="codebox__body"><code set:html={highlight(p.code)} /></pre>
+            </div>
+
+            <div class="entry__meta">
+              <code class="entry__stats">
+                ★ {p.stars}{p.forks ? ` · ${p.forks} forks` : ''}{p.statsNote ? ` (${p.statsNote})` : ''}
+              </code>
+              <span class="entry__role">{p.role}</span>
+              {p.credit && (
+                <span class="entry__credit">
+                  {p.credit} · <a href={p.creditUrl} target="_blank" rel="noopener">{p.creditUrl?.replace(/^https?:\/\//, '')}</a>
+                </span>
+              )}
+            </div>
+
+            <div class="entry__links">
+              <a class="tlink" href={p.github} target="_blank" rel="noopener">
+                <span>github</span><span class="arrow">↗</span>
+              </a>
+              {p.nuget && (
+                <a class="tlink" href={p.nuget} target="_blank" rel="noopener">
+                  <span>nuget</span><span class="arrow">↗</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============================ ABOUT ============================ -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <code class="about__head"><span class="p-user">gumbarros</span><span class="p-path">@portfolio:~$</span> {t('about.cmd')}</code>
+      <h2 class="reveal">{t('about.headline')}</h2>
+      <p class="reveal" set:html={t('about.body')} />
+      <div class="about__tags reveal">
+        {(t('about.tags') as readonly string[]).map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CONTACT ============================ -->
+  <section class="contact" id="contact">
+    <div class="wrap contact__inner">
+      <div class="contact__text">
+        <code class="contact__head"><span class="p-user">gumbarros</span><span class="p-path">@portfolio:~$</span> {t('contact.cmd')}</code>
+        <h2 class="reveal">{t('contact.headline')}</h2>
+        <div class="contact__ctas reveal">
+          <a class="btn btn--primary" href="https://www.linkedin.com/in/gumbarros" target="_blank" rel="noopener">
+            <span>{t('contact.linkedin')}</span><span class="arrow">↗</span>
+          </a>
+          <a class="btn btn--ghost" href="https://github.com/gumbarros" target="_blank" rel="noopener">
+            <span>{t('contact.github')}</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <figure class="contact__photo reveal">
+        <div class="codebox__bar">
+          <span>{t('contact.photo')}</span>
+        </div>
+        <img class="avatar" src="/me.png" alt="Gustavo Mauricio de Barros" width="460" height="460" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+</SiteLayout>
+
+<script>
+  // Hero type-in (one-shot, gated behind reduced-motion)
+  const cmd = document.querySelector<HTMLElement>('[data-type]');
+  if (cmd) {
+    const full = cmd.dataset.type as string;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cmd.textContent = full;
+    } else {
+      cmd.textContent = '';
+      let i = 0;
+      const tick = () => {
+        cmd.textContent = full.slice(0, ++i);
+        if (i < full.length) setTimeout(tick, 120);
+      };
+      setTimeout(tick, 400);
+    }
+  }
+</script>

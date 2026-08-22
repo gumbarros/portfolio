@@ -1,7 +1,7 @@
 /* Hallmark · tokens · theme: Terminal (dark mono · ice-blue accent) */
 
 :root {
-  /* colour — near-black neutral terminal, electric blue accent */
+  /* colour: near-black neutral terminal, electric blue accent */
   --color-paper: oklch(13% 0.006 220);
   --color-paper-2: oklch(16% 0.008 220);
   --color-paper-3: oklch(20% 0.010 220);
@@ -20,7 +20,7 @@
   --font-display: var(--font-mono);
   --font-body: var(--font-mono);
 
-  /* space — 4pt scale */
+  /* space: 4pt scale */
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;

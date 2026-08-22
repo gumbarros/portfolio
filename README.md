@@ -6,9 +6,9 @@ Built with [Astro](https://astro.build) and [Hallmark](https://opencode.ai) (I'm
 
 ## Stack
 
-- **Astro 5** — static site, zero client JS beyond a tiny reveal/type-in script
-- **JetBrains Mono** — single-family, monospace-only terminal voice
-- **OKLCH custom properties** — every colour, spacing and type token lives in
+- **Astro 5**: static site, zero client JS beyond a tiny reveal/type-in script
+- **JetBrains Mono**: single-family, monospace-only terminal voice
+- **OKLCH custom properties**: every colour, spacing and type token lives in
   `src/styles/tokens.css`
 
 ## Setup
@@ -34,10 +34,10 @@ If you cloned fresh, you can use `npm ci` instead of `npm install` for a clean i
 
 ## Editing
 
-- **Products** — edit `src/data/products.ts`. All star/fork counts are real and pulled
+- **Products**: edit `src/data/products.ts`. All star/fork counts are real and pulled
   from GitHub; keep them honest.
-- **Copy** — edit `src/pages/index.astro`.
-- **Design tokens** — edit `src/styles/tokens.css`; references tokens by name
+- **Copy**: edit `src/pages/index.astro`.
+- **Design tokens**: edit `src/styles/tokens.css`; references tokens by name
   (`var(--color-accent)`), never raw values.
 
 ## License
