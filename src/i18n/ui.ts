@@ -204,7 +204,7 @@ export const productContent: Record<
       credit: 'FluentStorage por Robin Rodricks',
     },
     embeddedsass: {
-      problem: 'Compile Sass dentro do .NET, não via um processo filho do Node.',
+      problem: 'Compile Sass dentro do .NET, não por um child process do Node.',
       description: 'Uma implementação .NET do protocolo Embedded Sass com uma API nativa.',
       role: 'autor',
     },
