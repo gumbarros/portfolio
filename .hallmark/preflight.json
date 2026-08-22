@@ -1,0 +1,11 @@
+{
+  "scanned": "2026-08-21",
+  "stack": "astro",
+  "signals": {
+    "fontStack": "JetBrains Mono (Google Fonts, BaseLayout.astro)",
+    "palette": "none — new OKLCH Terminal tokens (src/styles/tokens.css)",
+    "motion": "cut — IntersectionObserver reveal + one-shot type-in",
+    "spacing": "4pt scale (src/styles/tokens.css)",
+    "framework": "Astro 5"
+  }
+}
