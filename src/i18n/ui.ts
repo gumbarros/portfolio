@@ -37,6 +37,7 @@ export const ui = {
       headline: 'Every .NET pain, next to the line that removes it.',
       prompt: 'problem',
       entries: (n: number) => `${n} entries`,
+      viewMore: 'view more',
     },
     about: {
       cmd: 'whoami --verbose',
@@ -81,6 +82,7 @@ export const ui = {
       headline: 'Cada dor do .NET, ao lado da linha que a remove.',
       prompt: 'problema',
       entries: (n: number) => `${n} entradas`,
+      viewMore: 'ver mais',
     },
     about: {
       cmd: 'whoami --verbose',
@@ -125,6 +127,7 @@ export const ui = {
       headline: 'Cada dolor de .NET, junto a la línea que lo elimina.',
       prompt: 'problema',
       entries: (n: number) => `${n} entradas`,
+      viewMore: 'ver más',
     },
     about: {
       cmd: 'whoami --verbose',

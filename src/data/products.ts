@@ -13,6 +13,7 @@ export interface Product {
   creditUrl?: string;
   github: string;
   nuget?: string;
+  moreUrl?: string;
 }
 
 export const products: Product[] = [
@@ -29,6 +30,7 @@ export const products: Product[] = [
     role: 'contributor',
     github: 'https://github.com/ncalc/ncalc',
     nuget: 'https://www.nuget.org/packages/NCalc',
+    moreUrl: 'https://ncalc.gumbarros.com.br',
   },
   {
     id: 'jjmasterdata',
@@ -45,6 +47,7 @@ export const products: Product[] = [
     credit: 'Created by JJConsulting',
     creditUrl: 'https://jjconsulting.com.br',
     github: 'https://github.com/JJConsulting/JJMasterData',
+    moreUrl: 'https://md.jjconsulting.tech',
   },
   {
     id: 'fluentstorage-git',

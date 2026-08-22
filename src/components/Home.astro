@@ -97,6 +97,11 @@ function highlight(src: string): string {
             </div>
 
             <div class="entry__links">
+              {p.moreUrl && (
+                <a class="btn btn--primary" href={p.moreUrl} target="_blank" rel="noopener">
+                  <span>{t('products.viewMore')}</span><span class="arrow">↗</span>
+                </a>
+              )}
               <a class="tlink" href={p.github} target="_blank" rel="noopener">
                 <span>github</span><span class="arrow">↗</span>
               </a>
