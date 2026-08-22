@@ -8,7 +8,7 @@ interface Props {
 
 const { locale = defaultLocale } = Astro.props;
 const t = useTranslations(locale);
-const productUrl = 'https://github.com/gumbarros';
+const solutionUrl = 'https://github.com/gumbarros';
 const sourceUrl = 'https://github.com/gumbarros/portfolio';
 ---
 
@@ -20,10 +20,10 @@ const sourceUrl = 'https://github.com/gumbarros/portfolio';
       <div>{t('footer.line2')}</div>
     </div>
     <div class="footer__meta">
-      <a href="#products">{t('nav.products')}</a>
+      <a href="#solutions">{t('nav.solutions')}</a>
       <a href="#about">{t('nav.about')}</a>
       <a href="#contact">{t('nav.contact')}</a>
-      <a href={productUrl} target="_blank" rel="noopener">--github</a>
+      <a href={solutionUrl} target="_blank" rel="noopener">--github</a>
       <a
         class="footer__source"
         href={sourceUrl}

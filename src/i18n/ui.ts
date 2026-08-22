@@ -1,4 +1,4 @@
-import type { Product } from '../data/products';
+import type { Solution } from '../data/solutions';
 
 export const defaultLocale = 'en' as const;
 export const locales = ['en', 'pt-br', 'es'] as const;
@@ -20,7 +20,7 @@ export const localeLabels: Record<Locale, string> = {
 export const ui = {
   en: {
     nav: {
-      products: '--products',
+      solutions: '--solutions',
       about: '--about',
       contact: '--contact',
       github: '--github',
@@ -30,10 +30,10 @@ export const ui = {
       cmd: 'whoami',
       title: 'Gustavo Mauricio de&nbsp;Barros',
       lede: 'Software architect working the .NET ecosystem. I build the libraries developers reach for when a problem has a name: each one below is the problem, then the one-liner that removes it.',
-      viewProducts: 'view products',
+      viewSolutions: 'view solutions',
       contact: 'contact',
     },
-    products: {
+    solutions: {
       headline: 'Every .NET pain, next to the line that removes it.',
       prompt: 'problem',
       entries: (n: number) => `${n} entries`,
@@ -65,7 +65,7 @@ export const ui = {
   },
   'pt-br': {
     nav: {
-      products: '--produtos',
+      solutions: '--soluções',
       about: '--sobre',
       contact: '--contato',
       github: '--github',
@@ -75,10 +75,10 @@ export const ui = {
       cmd: 'whoami',
       title: 'Gustavo Mauricio de&nbsp;Barros',
       lede: 'Arquiteto de software atuando no ecossistema .NET. Construo as bibliotecas que os desenvolvedores procuram quando um problema tem nome. Cada uma abaixo é um problema, depois a linha que o soluciona.',
-      viewProducts: 'ver produtos',
+      viewSolutions: 'ver soluções',
       contact: 'contato',
     },
-    products: {
+    solutions: {
       headline: 'Cada dor do .NET, ao lado da linha que a remove.',
       prompt: 'problema',
       entries: (n: number) => `${n} entradas`,
@@ -110,7 +110,7 @@ export const ui = {
   },
   es: {
     nav: {
-      products: '--productos',
+      solutions: '--soluciones',
       about: '--sobre',
       contact: '--contacto',
       github: '--github',
@@ -120,10 +120,10 @@ export const ui = {
       cmd: 'whoami',
       title: 'Gustavo Mauricio de&nbsp;Barros',
       lede: 'Arquitecto de software trabajando en el ecosistema .NET. Construyo las bibliotecas que los desarrolladores buscan cuando un problema tiene nombre: cada una abajo es el problema, luego la línea que lo elimina.',
-      viewProducts: 'ver productos',
+      viewSolutions: 'ver soluciones',
       contact: 'contacto',
     },
-    products: {
+    solutions: {
       headline: 'Cada dolor de .NET, junto a la línea que lo elimina.',
       prompt: 'problema',
       entries: (n: number) => `${n} entradas`,
@@ -157,10 +157,10 @@ export const ui = {
 
 export type UI = (typeof ui)[Locale];
 
-/* --------------------------- Product content ---------------------------- */
-export const productContent: Record<
+/* -------------------------- Solution content ---------------------------- */
+export const solutionContent: Record<
   Locale,
-  Record<string, Pick<Product, 'problem' | 'description' | 'role' | 'statsNote' | 'credit'>>
+  Record<string, Pick<Solution, 'problem' | 'description' | 'role' | 'statsNote' | 'credit'>>
 > = {
   en: {
     ncalc: {

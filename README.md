@@ -34,7 +34,7 @@ If you cloned fresh, you can use `npm ci` instead of `npm install` for a clean i
 
 ## Editing
 
-- **Products**: edit `src/data/products.ts`. All star/fork counts are real and pulled
+- **Solutions**: edit `src/data/solutions.ts`. All star/fork counts are real and pulled
   from GitHub; keep them honest.
 - **Copy**: edit `src/pages/index.astro`.
 - **Design tokens**: edit `src/styles/tokens.css`; references tokens by name

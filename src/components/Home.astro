@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { products } from '../data/products';
-import { productContent, type Locale } from '../i18n/ui';
+import { solutions } from '../data/solutions';
+import { solutionContent, type Locale } from '../i18n/ui';
 import { useTranslations } from '../i18n/utils';
 
 interface Props {
@@ -11,9 +11,9 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 
-// Merge the static product shell with the localized content for this locale.
-const localizedProducts = products.map((p) => {
-  const extra = productContent[locale][p.id] ?? productContent.en[p.id];
+// Merge the static solution shell with the localized content for this locale.
+const localizedSolutions = solutions.map((p) => {
+  const extra = solutionContent[locale][p.id] ?? solutionContent.en[p.id];
   return { ...p, ...extra };
 });
 
@@ -49,28 +49,25 @@ function highlight(src: string): string {
       <h1 class="hero__title" set:html={t('hero.title')} />
       <p class="hero__lede" set:html={t('hero.lede')} />
       <div class="hero__ctas">
-        <a class="btn btn--primary" href="#products">
-          <span>{t('hero.viewProducts')}</span><span class="arrow">→</span>
-        </a>
-        <a class="btn btn--ghost" href="#contact">
+        <a class="btn btn--primary" href="#contact">
           <span>{t('hero.contact')}</span><span class="arrow">→</span>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- ============================ PRODUCTS ============================ -->
-  <section class="ledger" id="products">
+  <!-- ============================ SOLUTIONS ============================ -->
+  <section class="ledger" id="solutions">
     <div class="wrap ledger__head reveal">
-      <code class="cmd">gumbarros@portfolio:~$ ls ./problems/ · {t('products.entries')(localizedProducts.length)}</code>
-      <h2>{t('products.headline')}</h2>
+      <code class="cmd">gumbarros@portfolio:~$ ls ./problems/ · {t('solutions.entries')(localizedSolutions.length)}</code>
+      <h2>{t('solutions.headline')}</h2>
     </div>
 
     <div class="wrap ledger__list">
-      {localizedProducts.map((p, i) => (
+      {localizedSolutions.map((p, i) => (
         <article class:list={['entry', { 'entry--flip': i % 2 === 1 }]}>
           <div class="entry__problem reveal">
-            <code class="entry__prompt"><span class="p-user">$</span> {t('products.prompt')}</code>
+            <code class="entry__prompt"><span class="p-user">$</span> {t('solutions.prompt')}</code>
             <h3>{p.problem}</h3>
             <p class="entry__desc">{p.description}</p>
           </div>
@@ -99,7 +96,7 @@ function highlight(src: string): string {
             <div class="entry__links">
               {p.moreUrl && (
                 <a class="btn btn--primary" href={p.moreUrl} target="_blank" rel="noopener">
-                  <span>{t('products.viewMore')}</span><span class="arrow">↗</span>
+                  <span>{t('solutions.viewMore')}</span><span class="arrow">↗</span>
                 </a>
               )}
               <a class="tlink" href={p.github} target="_blank" rel="noopener">

@@ -8,11 +8,11 @@ interface Props {
 
 const { locale = defaultLocale } = Astro.props;
 const t = useTranslations(locale);
-const productUrl = 'https://github.com/gumbarros';
+const solutionUrl = 'https://github.com/gumbarros';
 const hash = Astro.url.hash;
 
 const links = [
-  { id: 'products', label: t('nav.products') },
+  { id: 'solutions', label: t('nav.solutions') },
   { id: 'about', label: t('nav.about') },
   { id: 'contact', label: t('nav.contact') },
 ];
@@ -29,7 +29,7 @@ const links = [
           {l.label}
         </a>
       ))}
-      <a class="nav__flag nav__flag--cta" href={productUrl} target="_blank" rel="noopener">--github ↗</a>
+      <a class="nav__flag nav__flag--cta" href={solutionUrl} target="_blank" rel="noopener">--github ↗</a>
       <label class="nav__lang">
         <span class="visually-hidden">{t('nav.language')}</span>
         <select

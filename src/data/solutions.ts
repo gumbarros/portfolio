@@ -1,4 +1,4 @@
-export interface Product {
+export interface Solution {
   id: string;
   name: string;
   problem: string;
@@ -16,7 +16,7 @@ export interface Product {
   moreUrl?: string;
 }
 
-export const products: Product[] = [
+export const solutions: Solution[] = [
   {
     id: 'ncalc',
     name: 'NCalc',
