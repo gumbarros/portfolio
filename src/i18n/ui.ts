@@ -58,7 +58,7 @@ export const ui = {
       mit: 'MIT libraries',
     },
     meta: {
-      title: 'Gustavo Mauricio de Barros',
+      title: 'Gustavo Mauricio de Barros · .NET Software Architect',
       description: 'Software architect building .NET tools that turn named problems into one-liners.',
     },
   },
@@ -102,7 +102,7 @@ export const ui = {
       mit: 'bibliotecas MIT',
     },
     meta: {
-      title: 'Gustavo Mauricio de Barros',
+      title: 'Gustavo Mauricio de Barros · Arquiteto de Software .NET',
       description: 'Arquiteto de software que constrói ferramentas .NET que transformam problemas com nome em uma linha.',
     },
   },
@@ -146,7 +146,7 @@ export const ui = {
       mit: 'bibliotecas MIT',
     },
     meta: {
-      title: 'Gustavo Mauricio de Barros',
+      title: 'Gustavo Mauricio de Barros · Arquitecto de Software .NET',
       description: 'Arquitecto de software que construye herramientas .NET que convierten problemas con nombre en una línea.',
     },
   },

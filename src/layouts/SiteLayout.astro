@@ -15,9 +15,31 @@ const { locale = defaultLocale } = Astro.props;
 const t = useTranslations(locale);
 const title = Astro.props.title ?? t('meta.title');
 const description = Astro.props.description ?? t('meta.description');
+
+// Single-page portfolio: every locale variant is a language mirror of the same
+// content, so canonical + hreflang alternates point across the three locale roots.
+const site = Astro.site ?? new URL('https://gumbarros.com.br');
+const canonical = new URL(Astro.url.pathname, site).href;
+
+const localeRoots: Record<Locale, string> = { en: '/', 'pt-br': '/pt-br/', es: '/es/' };
+const alternates = Object.entries(localeRoots).map(([hrefLang, path]) => ({
+  hrefLang,
+  href: new URL(path, site).href,
+}));
+
+const ogLocales: Record<Locale, string> = { en: 'en_US', 'pt-br': 'pt_BR', es: 'es_ES' };
+const ogImage = new URL('/me.png', site).href;
 ---
 
-<BaseLayout title={title} description={description} lang={locale}>
+<BaseLayout
+  title={title}
+  description={description}
+  lang={locale}
+  canonical={canonical}
+  alternates={alternates}
+  ogLocale={ogLocales[locale]}
+  image={ogImage}
+>
   <Nav locale={locale} />
   <main>
     <slot />

@@ -36,6 +36,7 @@ body {
   font-size: var(--text-base);
   font-weight: 400;
   min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* CRT scanlines: subtle phosphor overlay across the whole viewport */
@@ -843,21 +844,45 @@ button:focus-visible,
 
   .contact__photo {
     width: clamp(6.5rem, 34vw, 9rem);
+    justify-self: center;
+    margin-inline: auto;
+    margin-bottom: var(--space-xl);
+  }
+
+  .contact__text {
+    text-align: center;
+  }
+
+  .contact__ctas {
+    justify-content: center;
   }
 }
 
 @media (max-width: 40rem) {
+  html {
+    scroll-padding-top: 56px;
+  }
+
+  /* The decorative terminal prompt is redundant on phones (repeated in the
+     hero/about heads); dropping it keeps the sticky nav to one compact row. */
   .nav__prompt {
-    font-size: var(--text-xs);
+    display: none;
+  }
+
+  .nav__inner {
+    min-height: 44px;
+    padding-block: var(--space-2xs);
   }
 
   .nav__flags {
-    gap: var(--space-2xs);
+    gap: var(--space-xs);
+    justify-content: flex-end;
   }
 
   .nav__flag {
-    padding-inline: var(--space-2xs);
+    padding-inline: var(--space-xs);
     font-size: var(--text-xs);
+    min-height: 40px;
   }
 
   .hero__inner {
@@ -871,6 +896,40 @@ button:focus-visible,
   .codebox__body {
     font-size: var(--text-xs);
     padding: var(--space-md);
+  }
+}
+
+@media (max-width: 30rem) {
+  .nav__flags {
+    gap: var(--space-2xs);
+  }
+
+  .nav__flag--cta {
+    padding-inline: var(--space-xs);
+  }
+
+  .hero__ctas {
+    gap: var(--space-sm);
+  }
+
+  .btn {
+    padding-inline: var(--space-md);
+  }
+
+  .entry {
+    padding-block: var(--space-2xl);
+  }
+
+  .entry__desc {
+    max-width: 100%;
+  }
+
+  .codebox__body {
+    padding: var(--space-sm);
+  }
+
+  .about__tags {
+    gap: var(--space-xs);
   }
 }
 

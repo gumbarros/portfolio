@@ -5,26 +5,88 @@ interface Props {
   title?: string;
   description?: string;
   lang?: string;
+  canonical?: string;
+  alternates?: { hrefLang: string; href: string }[];
+  ogLocale?: string;
+  image?: string;
+  siteName?: string;
 }
 
-const { title = 'Gustavo Mauricio de Barros', description = 'Software architect building .NET tools that turn named problems into one-liners.', lang = 'en' } = Astro.props;
+const {
+  title = 'Gustavo Mauricio de Barros',
+  description = 'Software architect building .NET tools that turn named problems into one-liners.',
+  lang = 'en',
+  canonical,
+  alternates = [],
+  ogLocale = 'en_US',
+  image,
+  siteName = 'Gustavo Mauricio de Barros',
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://gumbarros.com.br');
+const absCanonical = canonical ?? new URL(Astro.url.pathname, site).href;
+const ogImage = image ?? new URL('/me.png', site).href;
+const xDefault = new URL('/', site).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Gustavo Mauricio de Barros',
+  url: absCanonical,
+  image: ogImage,
+  jobTitle: 'Software Architect',
+  knowsAbout: ['.NET', 'C#', 'software architecture', 'open source'],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'JJConsulting',
+    url: 'https://www.jjconsulting.com.br',
+  },
+  sameAs: ['https://www.linkedin.com/in/gumbarros', 'https://github.com/gumbarros'],
+};
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="author" content="Gustavo Mauricio de Barros" />
+    <meta name="theme-color" content="#14181f" />
     <meta name="generator" content={Astro.generator} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={absCanonical} />
+    {alternates.map((a) => (
+      <link rel="alternate" hreflang={a.hrefLang} href={a.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={absCanonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Gustavo Mauricio de Barros" />
+    <meta property="og:locale" content={ogLocale} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
   </head>
   <body>
     <slot />
