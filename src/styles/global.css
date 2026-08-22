@@ -843,28 +843,30 @@ button:focus-visible,
   }
 
   .contact__photo {
+    order: -1;
     width: clamp(6.5rem, 34vw, 9rem);
-    justify-self: center;
-    margin-inline: auto;
+    justify-self: start;
+    margin-inline: 0;
     margin-bottom: var(--space-xl);
   }
 
   .contact__text {
-    text-align: center;
+    text-align: left;
   }
 
   .contact__ctas {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 48rem) {
   html {
     scroll-padding-top: 56px;
   }
 
-  /* The decorative terminal prompt is redundant on phones (repeated in the
-     hero/about heads); dropping it keeps the sticky nav to one compact row. */
+  /* The decorative terminal prompt is redundant on phones/tablets (repeated in
+     the hero/about heads); dropping it keeps the sticky nav to one compact row
+     instead of letting the prompt get clipped at medium widths. */
   .nav__prompt {
     display: none;
   }
@@ -884,7 +886,9 @@ button:focus-visible,
     font-size: var(--text-xs);
     min-height: 40px;
   }
+}
 
+@media (max-width: 40rem) {
   .hero__inner {
     padding-block: var(--space-3xl) var(--space-3xl);
   }
