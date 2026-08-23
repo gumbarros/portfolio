@@ -665,127 +665,6 @@ button:focus-visible,
   margin-top: var(--space-2xl);
 }
 
-.capabilities {
-  margin-top: var(--space-3xl);
-  padding-top: var(--space-2xl);
-  border-top: 1px solid var(--color-rule);
-}
-
-.capabilities__head {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: var(--space-xl);
-}
-
-.capabilities__cmd {
-  display: block;
-  color: var(--color-ink-3);
-  font-size: var(--text-xs);
-  margin-bottom: var(--space-md);
-}
-
-.capabilities__cmd .p-user { color: var(--color-accent); }
-.capabilities__cmd .p-path { color: var(--color-ink-2); }
-
-.capabilities h3 {
-  font-size: var(--text-2xl);
-}
-
-.capabilities__head p {
-  color: var(--color-ink-3);
-  font-size: var(--text-xs);
-  text-align: right;
-}
-
-.capabilities__filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  margin-block: var(--space-xl) var(--space-lg);
-}
-
-.capability-filter {
-  border: 1px solid var(--color-rule);
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--color-ink-3);
-  cursor: pointer;
-  font: inherit;
-  font-size: var(--text-xs);
-  min-height: 40px;
-  padding: var(--space-xs) var(--space-sm);
-  transition: color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
-}
-
-.capability-filter__mark {
-  color: var(--color-ink-3);
-  margin-right: var(--space-xs);
-}
-
-.capability-filter:hover,
-.capability-filter.is-active {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.capability-filter.is-active {
-  background: color-mix(in oklch, var(--color-accent) 10%, transparent);
-}
-
-.capabilities__grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-sm);
-}
-
-.skill-badge {
-  min-height: 94px;
-  padding: var(--space-md);
-  border: 1px solid color-mix(in oklch, var(--badge-color) 55%, var(--color-rule));
-  border-left: 3px solid var(--badge-color);
-  background: color-mix(in oklch, var(--badge-color) 7%, var(--color-paper-2));
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--space-xs);
-  transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
-}
-
-.skill-badge:hover {
-  transform: translateY(-3px);
-  background: color-mix(in oklch, var(--badge-color) 13%, var(--color-paper-2));
-}
-
-.skill-badge[hidden] { display: none; }
-
-.skill-badge__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--badge-color);
-  box-shadow: 0 0 10px var(--badge-color);
-}
-
-.skill-badge strong {
-  color: var(--color-ink);
-  font-size: var(--text-sm);
-  font-weight: 500;
-}
-
-.skill-badge small {
-  color: var(--color-ink-3);
-  font-size: 0.68rem;
-}
-
-.skill-badge--frontend { --badge-color: oklch(75% 0.18 80); }
-.skill-badge--backend { --badge-color: oklch(70% 0.18 150); }
-.skill-badge--mobile { --badge-color: oklch(72% 0.18 205); }
-.skill-badge--data { --badge-color: oklch(72% 0.18 275); }
-.skill-badge--devops { --badge-color: oklch(72% 0.19 330); }
-.skill-badge--architecture { --badge-color: oklch(72% 0.18 35); }
-.skill-badge--personal { --badge-color: oklch(73% 0.18 105); }
-
 .career-terminal {
   border: 1px solid var(--color-rule);
   background: var(--color-paper-2);
@@ -1038,10 +917,6 @@ button:focus-visible,
     margin-top: var(--space-xl);
   }
 
-  .capabilities__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .contact__photo {
     order: -1;
     width: clamp(6.5rem, 34vw, 9rem);
@@ -1102,14 +977,6 @@ button:focus-visible,
     padding: var(--space-md);
   }
 
-  .capabilities__head {
-    display: block;
-  }
-
-  .capabilities__head p {
-    margin-top: var(--space-sm);
-    text-align: left;
-  }
 }
 
 @media (max-width: 30rem) {
@@ -1139,10 +1006,6 @@ button:focus-visible,
 
   .codebox__body {
     padding: var(--space-sm);
-  }
-
-  .capabilities__grid {
-    grid-template-columns: 1fr;
   }
 
   .career-event {

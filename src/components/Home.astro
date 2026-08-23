@@ -17,49 +17,6 @@ const localizedSolutions = solutions.map((p) => {
   return { ...p, ...extra };
 });
 
-const skillCategories = [
-  { id: 'all', label: { en: 'all', 'pt-br': 'todas', es: 'todas' } },
-  { id: 'frontend', label: { en: 'frontend', 'pt-br': 'frontend', es: 'frontend' } },
-  { id: 'backend', label: { en: 'backend', 'pt-br': 'backend', es: 'backend' } },
-  { id: 'mobile', label: { en: 'mobile', 'pt-br': 'mobile', es: 'móvil' } },
-  { id: 'data', label: { en: 'data', 'pt-br': 'dados', es: 'datos' } },
-  { id: 'devops', label: { en: 'devops / ci', 'pt-br': 'devops / ci', es: 'devops / ci' } },
-  { id: 'architecture', label: { en: 'architecture', 'pt-br': 'arquitetura', es: 'arquitectura' } },
-  { id: 'personal', label: { en: 'personal', 'pt-br': 'pessoal', es: 'personal' } },
-] as const;
-
-const skills = [
-  { name: 'HTML / CSS', category: 'frontend', note: { en: 'semantic UI', 'pt-br': 'UI semântica', es: 'UI semántica' } },
-  { name: 'JavaScript', category: 'frontend', note: { en: 'web platform', 'pt-br': 'plataforma web', es: 'plataforma web' } },
-  { name: 'Astro', category: 'frontend', note: { en: 'this portfolio', 'pt-br': 'este portfólio', es: 'este portafolio' } },
-  { name: 'C# / .NET', category: 'backend', note: { en: 'daily driver', 'pt-br': 'ferramenta principal', es: 'herramienta principal' } },
-  { name: 'ASP.NET Core', category: 'backend', note: { en: 'production APIs', 'pt-br': 'APIs em produção', es: 'APIs en producción' } },
-  { name: 'Node.js', category: 'backend', note: { en: 'JavaScript runtime', 'pt-br': 'runtime JavaScript', es: 'runtime JavaScript' } },
-  { name: 'FastAPI', category: 'backend', note: { en: 'fast Python APIs', 'pt-br': 'APIs Python rápidas', es: 'APIs Python rápidas' } },
-  { name: 'F#', category: 'backend', note: { en: 'functional .NET', 'pt-br': '.NET funcional', es: '.NET funcional' } },
-  { name: 'Flutter', category: 'mobile', note: { en: 'cross-platform', 'pt-br': 'multiplataforma', es: 'multiplataforma' } },
-  { name: 'Kotlin', category: 'mobile', note: { en: 'Android & multiplatform', 'pt-br': 'Android e multiplataforma', es: 'Android y multiplataforma' } },
-  { name: 'SQL Server', category: 'data', note: { en: 'relational', 'pt-br': 'relacional', es: 'relacional' } },
-  { name: 'MySQL', category: 'data', note: { en: 'relational', 'pt-br': 'relacional', es: 'relacional' } },
-  { name: 'MongoDB', category: 'data', note: { en: 'document store', 'pt-br': 'banco de documentos', es: 'base de documentos' } },
-  { name: 'GitLab CI', category: 'devops', note: { en: 'pipelines', 'pt-br': 'pipelines', es: 'pipelines' } },
-  { name: 'GitHub Actions', category: 'devops', note: { en: 'automation', 'pt-br': 'automação', es: 'automatización' } },
-  { name: 'Microservices', category: 'architecture', note: { en: 'distributed systems', 'pt-br': 'sistemas distribuídos', es: 'sistemas distribuidos' } },
-  { name: 'Domain-Driven Design', category: 'architecture', note: { en: 'bounded contexts', 'pt-br': 'contextos delimitados', es: 'contextos delimitados' } },
-  { name: 'Software Architecture', category: 'architecture', note: { en: 'systems thinking', 'pt-br': 'visão sistêmica', es: 'visión sistémica' } },
-  { name: 'Strangler Fig', category: 'architecture', note: { en: 'gradual modernization', 'pt-br': 'modernização gradual', es: 'modernización gradual' } },
-  { name: 'Modular Monolith', category: 'architecture', note: { en: 'structured simplicity', 'pt-br': 'simplicidade estruturada', es: 'simplicidad estructurada' } },
-  { name: 'Open Source', category: 'personal', note: { en: 'github.com/gumbarros', 'pt-br': 'github.com/gumbarros', es: 'github.com/gumbarros' } },
-  { name: 'Design Thinking', category: 'personal', note: { en: 'human-centered', 'pt-br': 'foco nas pessoas', es: 'centrado en las personas' } },
-  { name: 'People Management', category: 'personal', note: { en: 'team leadership', 'pt-br': 'liderança de equipes', es: 'liderazgo de equipos' } },
-] as const;
-
-const skillsCopy = {
-  en: { cmd: 'ls ./capabilities/ --group-by category', title: 'Tools I reach for', hint: 'filter by where the work happens' },
-  'pt-br': { cmd: 'ls ./capacidades/ --group-by categoria', title: 'Ferramentas que uso', hint: 'filtre por onde o trabalho acontece' },
-  es: { cmd: 'ls ./capacidades/ --group-by categoria', title: 'Herramientas que uso', hint: 'filtra por dónde ocurre el trabajo' },
-} as const;
-
 // Naive terminal highlighting: mute comment lines; wrap a leading keyword.
 function highlight(src: string): string {
   return src
@@ -186,34 +143,6 @@ function highlight(src: string): string {
           </div>
         </div>
 
-        <section class="capabilities reveal" aria-labelledby="capabilities-title">
-          <div class="capabilities__head">
-            <div>
-              <code class="capabilities__cmd"><span class="p-user">gumbarros</span><span class="p-path">@portfolio:~$</span> {skillsCopy[locale].cmd}</code>
-              <h3 id="capabilities-title">{skillsCopy[locale].title}</h3>
-            </div>
-            <p>{skillsCopy[locale].hint}</p>
-          </div>
-
-          <div class="capabilities__filters" role="group" aria-label="Filter skills">
-            {skillCategories.map((category, index) => (
-              <button class:list={['capability-filter', { 'is-active': index === 0 }]} type="button" data-filter={category.id} aria-pressed={index === 0 ? 'true' : 'false'}>
-                <span class="capability-filter__mark">{index === 0 ? '*' : '+'}</span>{category.label[locale]}
-              </button>
-            ))}
-          </div>
-
-          <div class="capabilities__grid">
-            {skills.map((skill) => (
-              <article class={`skill-badge skill-badge--${skill.category}`} data-category={skill.category}>
-                <span class="skill-badge__dot" aria-hidden="true"></span>
-                <strong>{skill.name}</strong>
-                <small>{skill.note[locale]}</small>
-              </article>
-            ))}
-          </div>
-        </section>
-
       </div>
     </div>
   </section>
@@ -261,23 +190,4 @@ function highlight(src: string): string {
       setTimeout(tick, 400);
     }
   }
-</script>
-
-<script>
-  const filters = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
-  const badges = document.querySelectorAll<HTMLElement>('[data-category]');
-
-  filters.forEach((filter) => {
-    filter.addEventListener('click', () => {
-      const selected = filter.dataset.filter;
-      filters.forEach((item) => {
-        const active = item === filter;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-pressed', String(active));
-      });
-      badges.forEach((badge) => {
-        badge.hidden = selected !== 'all' && badge.dataset.category !== selected;
-      });
-    });
-  });
 </script>
