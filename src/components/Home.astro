@@ -131,11 +131,16 @@ function highlight(src: string): string {
             <span class="career-terminal__status">● {t('about.status')}</span>
           </div>
           <div class="career-terminal__body">
+            <svg class="career-icons" aria-hidden="true">
+              <symbol id="career-icon-0" viewBox="0 0 16 16"><path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/><path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/></symbol>
+              <symbol id="career-icon-1" viewBox="0 0 16 16"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/></symbol>
+            </svg>
             <code class="career-terminal__command"><span class="p-user">$</span> cat /var/log/gumbarros</code>
             <div class="career-terminal__events">
-              {(t('about.events') as readonly { year: string; text: string }[]).map((event) => (
+              {(t('about.events') as readonly { year: string; text: string }[]).map((event, index) => (
                 <div class="career-event">
                   <span class="career-event__year">[{event.year}]</span>
+                  <svg class="career-event__icon"><use href={`#career-icon-${index % 2}`} /></svg>
                   <span>{event.text}</span>
                 </div>
               ))}
