@@ -63,7 +63,6 @@ export const ui = {
     footer: {
       brand: 'Gustavo Mauricio de Barros',
       line1: 'Built from 🇧🇷',
-      line2: 'Not vibe-coded, but thought by a human and written by a machine.',
       mit: 'MIT libraries',
     },
     meta: {
@@ -116,7 +115,6 @@ export const ui = {
     footer: {
       brand: 'Gustavo Mauricio de Barros',
       line1: 'Feito no 🇧🇷',
-      line2: 'Este site não foi vibe codado, mas pensado por um humano e escrito por uma máquina.',
       mit: 'bibliotecas MIT',
     },
     meta: {
@@ -169,7 +167,6 @@ export const ui = {
     footer: {
       brand: 'Gustavo Mauricio de Barros',
       line1: 'Hecho en 🇧🇷',
-      line2: 'No es vibe-coded, sino pensado por un humano y escrito por una máquina.',
       mit: 'bibliotecas MIT',
     },
     meta: {
